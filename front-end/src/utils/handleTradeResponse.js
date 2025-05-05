@@ -21,7 +21,7 @@ export function handleTradeResponse(data, form) {
 
       case 'SUCCESSFUL_REGISTRATION' :
           return {
-              message: `Successfully registeres as ${data.username} with email ${data.email}`,
+              message: `Successfully registered as ${data.username} with email ${data.email}`,
           error: ''
           };
   
