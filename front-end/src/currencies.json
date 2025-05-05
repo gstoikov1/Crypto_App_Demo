@@ -1,0 +1,24 @@
+{
+    "currencies": [
+        "LINK/USD",
+        "UNI/USD",
+        "ETC/USD",
+        "XRP/USD",
+        "ETH/USD",
+        "BCH/USD",
+        "LTC/USD",
+        "DOGE/USD",
+        "FIL/USD",
+        "DOT/USD",
+        "BTC/USD",
+        "ATOM/USD",
+        "MATIC/USD",
+        "ICP/USD",
+        "APE/USD",
+        "TRX/USD",
+        "XLM/USD",
+        "ADA/USD",
+        "AVAX/USD",
+        "SOL/USD"
+    ]
+}

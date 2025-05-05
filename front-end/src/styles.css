@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+    font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.tab-button {
+    @apply flex-1 p-4 hover:bg-blue-700; /* Keep the button styling */
+}
+
+.tab-button a {
+    display: block; /* Make the <a> fill the button */
+    width: 100%;
+    height: 100%;
+    padding: 0;  /* Remove padding here to avoid doubling padding */
+    text-decoration: none;  /* Remove underline */
+    color: inherit;  /* Inherit text color */
+    text-align: center;  /* Center text */
+}
+
+
+  

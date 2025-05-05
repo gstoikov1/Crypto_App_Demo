@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto Trader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="tabs">
+    <button class="tab-button" data-tab="register">Register</button>
+    <button class="tab-button" data-tab="prices">Prices</button>
+    <button class="tab-button" data-tab="buy">Buy</button>
+    <button class="tab-button" data-tab="sell">Sell</button>
+</div>
+
+<div id="register" class="tab-content">
+    <h2>Register</h2>
+    <form id="registerForm">
+        <label>Username:</label>
+        <input type="text" id="username" required><br>
+        <label>Password:</label>
+        <input type="password" id="password" required><br>
+        <label>Email:</label>
+        <input type="email" id="email" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <p id="registerResponse"></p>
+</div>
+
+<div id="prices" class="tab-content" style="display:none">
+    <h2>Live Prices</h2>
+    <div id="priceTable"></div>
+</div>
+
+<div id="buy" class="tab-content" style="display:none">
+    <h2>Buy Crypto</h2>
+    <form id="buyForm">
+        <label>Username:</label>
+        <input type="text" id="buyUsername" required><br>
+        <label>Password:</label>
+        <input type="password" id="buyPassword" required><br>
+        <label>Symbol:</label>
+        <div class="custom-dropdown" id="buyDropdownContainer"></div>
+        <input type="hidden" id="buySymbol"><br>
+        <label>Quantity:</label>
+        <input type="number" id="buyQuantity" required><br>
+        <button type="submit">Buy</button>
+    </form>
+    <p id="buyResponse"></p>
+</div>
+
+<div id="sell" class="tab-content" style="display:none">
+    <h2>Sell Crypto</h2>
+    <form id="sellForm">
+        <label>Username:</label>
+        <input type="text" id="sellUsername" required><br>
+        <label>Password:</label>
+        <input type="password" id="sellPassword" required><br>
+        <label>Symbol:</label>
+        <div class="custom-dropdown" id="sellDropdownContainer"></div>
+        <input type="hidden" id="sellSymbol"><br>
+        <label>Quantity:</label>
+        <input type="number" id="sellQuantity" required><br>
+        <button type="submit">Sell</button>
+    </form>
+    <p id="sellResponse"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

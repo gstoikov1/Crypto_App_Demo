@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+
+        .tab.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        form input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px 15px;
+        }
+
+        #response {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Account Portal</h2>
+
+<div class="tabs">
+    <div class="tab active" data-target="register">Register</div>
+    <div class="tab" data-target="login">Login</div>
+    <div class="tab" data-target="prices">Prices</div>
+</div>
+
+<div id="register" class="content active">
+    <form id="registerForm">
+        <label>Username:</label><br/>
+        <input type="text" id="username" required><br/>
+        <label>Password:</label><br/>
+        <input type="password" id="password" required><br/>
+        <label>Email:</label><br/>
+        <input type="email" id="email" required><br/><br/>
+        <button type="submit">Register</button>
+    </form>
+    <p id="response"></p>
+</div>
+
+<div id="login" class="content">
+    <form id="loginForm">
+        <label>Username:</label><br/>
+        <input type="text" id="loginUsername" required><br/>
+        <label>Password:</label><br/>
+        <input type="password" id="loginPassword" required><br/><br/>
+        <button type="submit">Login</button>
+    </form>
+    <p id="loginResponse"></p>
+</div>
+
+<div id="prices" class="content">
+    <h3>Pricing Plans</h3>
+    <ul>
+        <li>Free - $0/month</li>
+        <li>Pro - $9.99/month</li>
+        <li>Enterprise - Contact us</li>
+    </ul>
+</div>
+
+<script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            contents.forEach(c => c.classList.remove("active"));
+
+            tab.classList.add("active");
+            document.getElementById(tab.dataset.target).classList.add("active");
+        });
+    });
+
+    // Register form handler
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const responseElement = document.getElementById("response");
+        responseElement.innerText = "Processing...";
+
+        const payload = {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+            email: document.getElementById("email").value
+        };
+
+        try {
+            const res = await fetch("/api/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                responseElement.innerText = "✅ Registered successfully as " + data.username;
+            } else {
+                responseElement.innerText = "❌ Error: " + data.userResponseType;
+            }
+        } catch (error) {
+            responseElement.innerText = "❌ Network or server error";
+        }
+    });
+
+    // Login form placeholder
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const loginResponse = document.getElementById("loginResponse");
+        loginResponse.innerText = "🔐 Login not implemented yet.";
+    });
+</script>
+
+</body>
+</html>
