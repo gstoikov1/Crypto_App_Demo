@@ -149,6 +149,16 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    @ExceptionHandler(InsufficientSymbolException.class)
+    public ResponseEntity<UserResponse> handleInsufficientSymbol(InsufficientSymbolException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(UserResponse.builder()
+                        .responseResult(ResponseResult.INSUFFICIENT_SYMBOL)
+                        .responseTime(LocalDateTime.now())
+                        .build());
+    }
+
+
     @ExceptionHandler(PriceUnavailableException.class)
     public ResponseEntity<TradeResponse> handlePriceUnavailable(PriceUnavailableException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)

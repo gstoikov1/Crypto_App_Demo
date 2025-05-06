@@ -142,7 +142,7 @@ public class TransactionService {
         BigDecimal currentQuantity = walletRepository.findQuantityByWalletIdAndSymbol(wallet.getId(), symbol);
 
         if (currentQuantity == null || quantityToSell.compareTo(currentQuantity) > 0) {
-            throw new InsufficientFundsException("Not enough crypto to sell: requested " + quantityToSell + ", available " + currentQuantity);
+            throw new InsufficientSymbolException("Not enough crypto to sell: requested " + quantityToSell + ", available " + currentQuantity);
         }
     }
 

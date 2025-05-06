@@ -24,6 +24,12 @@ export function handleTradeResponse(data, form) {
               message: `Successfully registered as ${data.username} with email ${data.email}`,
           error: ''
           };
+
+      case 'INSUFFICIENT_SYMBOL' :
+            return {
+                message: ``,
+            error: 'Not enough quantity of ${form.symbol} to sell'
+            };
   
 
       case 'SUCCESSFUL_RESET' :
