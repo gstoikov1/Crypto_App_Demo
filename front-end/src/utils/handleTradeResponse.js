@@ -28,7 +28,7 @@ export function handleTradeResponse(data, form) {
       case 'INSUFFICIENT_SYMBOL' :
             return {
                 message: ``,
-            error: 'Not enough quantity of ${form.symbol} to sell'
+                error: `Not enough quantity of ${form.symbol} to sell`
             };
   
 
